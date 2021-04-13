@@ -46,3 +46,12 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Hirb 適用
+gem 'hirb'
+gem 'hirb-unicode'
+
+# Hirb 常用化
+group :development, :test do
+  gem 'pry-rails'
+end

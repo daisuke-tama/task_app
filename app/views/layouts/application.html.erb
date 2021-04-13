@@ -3,12 +3,35 @@
   <head>
     <title>TaskApp</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+  <header>
+    <div class="header-top">
+      <div class="header_container content-width">
+        <h2 class="header-left">スケジュール管理アプリ</h2>
+        <div class="header-right">
+          <a href="/">スケジュール一覧</a>
+          <a href="/posts/new">新規作成</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <div class="top_page_bgi" style="background-image:url(/assets/huukei.jpg)">
+  <p><img src="/assets/huukei.jpg"></p>
+  
+  <% if flash[:notice] %>
+  <div class="flash-container">
+    <div class="flash">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+  <% end %>
+  
+  <%= yield %>
+  <footer></footer>
   </body>
 </html>

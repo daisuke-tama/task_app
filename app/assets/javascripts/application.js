@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(function(){
+  $('.flash').fadeOut(6000);  //6秒かけて消えていく
+});
