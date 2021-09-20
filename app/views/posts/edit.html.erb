@@ -1,0 +1,61 @@
+<div class="text_box content-width">
+  <h1 class="top-logo">スケジュール編集</h1>
+  
+  <div class="home_form">
+    <div class="form_body">
+      <% @post.errors.full_messages.each do |message| %>
+        <div class="form_error">
+          <%= message %>
+        </div>
+      <% end %>
+      
+    </div>
+  </div>
+  
+  <%= form_tag("/posts/#{@post.id}/update") do %>
+    <table>
+      <tbody>
+        <tr>
+          <td class="td_align">タイトル</td>
+          <td class="td_input">
+            <input class="title-text" type="text" name="title"/ value="<%= @post.title %>">
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="td_align">開始日</td>
+          <td class="td_input">
+            <input name="start_day" type="date" value="<%= @post.start_day %>"/>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="td_align">終了日</td>
+          <td class="td_input">
+            <input name="finish_day" type="date" value="<%= @post.finish_day %>"/>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="td_align">終日</td>
+          <td class="td_input">
+            <input name="one_day" type="checkbox"/>
+              <% if @post.one_day == true%>
+              編集前は終日でした
+              <% else %>
+              編集前は終日ではありませんでした
+              <% end %>
+            </input>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="td_font" colspan="2">
+            <textarea name="memo" id="" cols="80%" rows="10"><%= @post.memo %></textarea>
+            <input class="form-memo" type="submit" value="保存"/>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>

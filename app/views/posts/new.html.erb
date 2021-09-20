@@ -1,0 +1,54 @@
+<div class="text_box content-width">
+  <h1 class="top-logo">スケジュール新規作成</h1>
+  
+  <div class="home_form">
+    <div class="form_body">
+      <% @post.errors.full_messages.each do |message| %>
+        <div class="form_error">
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
+  <%= form_tag("/posts/create") do %>
+    <table>
+      <tbody>
+        <tr>
+          <td class="td_align">タイトル</td>
+          <td class="td_input">
+            <input class="title-text" type="text" name="title" placeholder="タイトルを入力してください（無記入または10文字以上は受け付けません）" value="<%= @post.title %>"/>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="td_align">開始日</td>
+          <td class="td_input">
+            <input name="start_day" type="date"/>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="td_align">終了日</td>
+          <td class="td_input">
+            <input name="finish_day" type="date"/>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="td_align">終日</td>
+          <td class="td_input">
+            <input name="one_day" type="checkbox">
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="td_font" colspan="2">
+            <textarea name="memo" id="" cols="80%" rows="10" placeholder="メモを記入してください(無記入は受け付けません)" value="<%= @post.memo %>"></textarea>
+            <input class="form-memo" type="submit" name=""/>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>

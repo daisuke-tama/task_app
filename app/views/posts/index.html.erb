@@ -1,0 +1,33 @@
+<div class="text_box content-width">
+  <h1 class="top-logo">スケジュール一覧</h1>
+  
+  <% @posts.each do |post| %>
+    <table class="top_page_table">
+    	<tbody>
+    	  <tr class="text_center text_header">
+    	    <td>タイトル</td>
+    	    <td>開始日</td>
+    	    <td>終了日</td>
+    	    <td>終日？</td>
+    	    <td>メモ内容</td>
+    	    <td></td>
+    	    <td></td>
+    	  </tr>
+    	  
+    		<tr class="text_center">
+    			<td><%= post.title %></td>
+    			<td><%= post.start_day %></td>
+    			<td><%= post.finish_day %></td>
+    			<% if post.one_day == true%>
+    			<td>終日</td>
+    			<% else %>
+    			<td></td>
+    			<% end %>
+    			<td><%= safe_join(post.memo.split("\n"),tag(:br)) %></td>
+    			<td><%= link_to("編集","/posts/#{post.id}/edit")%></td>
+    			<td><%= link_to("削除","/posts/#{post.id}/destroy",{method:"post"})%></td>
+    		</tr>
+    	</tbody>
+    </table>
+  <% end %>
+</div>
